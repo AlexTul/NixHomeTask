@@ -1,32 +1,36 @@
+/*
+ * Copyright (c) 2022
+ * For Nix
+ */
 package com.nix.alextuleninov.task1;
 
+import lombok.extern.log4j.Log4j;
+
+/**
+ * The Group class consists data about students and contract student
+ * and displays this data.
+ * @version 01
+ *
+ * @author Alexander Tuleninov
+ */
+@Log4j
 public class Group {
-    static Student[] students;
-
-    public static void displayNameCostOfStudent(Student[] students, double[] cost) {
-        for (int i = 0; i < students.length; i++) {
-            ContractStudent.displayNameCostOfStudent(students[i].getName(), cost[i]);
-        }
-    }
-
-    public static void displayDataOfStudent(double cost) {
-        System.out.println("Cost of contract: " + cost);
-    }
-
 
     public static void main(String[] args) {
-        ContractStudent cs0 = new ContractStudent("Petya", 2000);
-        ContractStudent cs1 = new ContractStudent("Ira", 2100);
-        ContractStudent cs2 = new ContractStudent("Gosha", 2050);
+        Student[] students = new Student[3];
 
-        students[0].setName("Vasya");
-        students[1].setName("Peta");
-        students[2].setName("Tanya");
+        Student st = new Student();
+        st.setName("Petr");
+        st.setAge(20);
 
-        System.out.println(students[0]);
+        ContractStudent cS = new ContractStudent("Kate", 2000);
+        ContractStudent cS1 = new ContractStudent("James", 2100);
 
+        students[0] = st;
+        students[1] = cS;
+        students[2] = cS1;
 
-
-
+        log.info(students[1].displayDataOfStudent(cS.getName()));
+        log.info(students[2].displayDataOfStudent(cS1.getName()));
     }
 }
