@@ -2,13 +2,15 @@
  * Copyright (c) 2022
  * For Nix
  */
-package com.nix.alextuleninov.task2;
+package com.nixsolutions.alextuleninov.task2;
 
 import lombok.extern.log4j.Log4j;
 import java.util.Scanner;
 
 /**
- * The MainTask2 class implements: the user selects one of the substances and then can enter the values
+ * The ChangeAggregateStateSubstance class implements a program that simulates the change in the state of aggregation
+ * of substances depending on temperature.
+ * The user selects one of the substances and then can enter the values
  * by which he changes its temperature. Each time he does this, output a new temperature of the substance
  * and its state of aggregation at that temperature. If you enter 0 - terminate the program execution.
  * Initial temperature = 20 C for all substances.
@@ -17,7 +19,7 @@ import java.util.Scanner;
  * @author Alexander Tuleninov
  */
 @Log4j
-public class MainTask2 {
+public class ChangeAggregateStateSubstance {
     public static void main(String[] args) {
         Substance sub;
         Scanner in = new Scanner(System.in);
@@ -26,31 +28,35 @@ public class MainTask2 {
         String substance = in.nextLine();
         log.info("Enter the temperature in the format '0,0': ");
         double temp = in.nextDouble();
+        in.close();
         if (temp != 0) {
             switch (substance) {
                 case "water" -> {
                     sub = new Water();
-                    sub.stateHeatUp(temp);
-                    if (temp < 0) {
-                        log.info("Temperature: " + sub.getTemperature() + " degrees, aggregate states: " + State.SOLID);
-                    } else if (temp > 100) {
-                        log.info("Temperature: " + sub.getTemperature() + " degrees, aggregate states: " + State.GAS);
-                    } else {
-                        log.info("Temperature: " + sub.getTemperature() + " degrees, aggregate states: " + State.LIQUID);
-                    }
+                    log.info(getMessage(sub, temp));
                 }
                 case "iron" -> {
                     sub = new Iron();
-                    sub.stateHeatUp(temp);
-                    log.info("Temperature: " + sub.getTemperature() + " degrees, aggregate states: " + State.SOLID);
+                    log.info(getMessage(sub, temp));
                 }
                 case "oxygen" -> {
                     sub = new Oxygen();
-                    sub.stateHeatUp(temp);
-                    log.info("Temperature: " + sub.getTemperature() + " degrees, aggregate states: " + State.GAS);
+                    log.info(getMessage(sub, temp));
                 }
                 default -> log.info("You entered incorrect data!");
             }
         }
+    }
+
+    /**
+     * This method display the new temperature of the substance and its state of aggregation at this temperature.
+     *
+     * @param sub                   the substances
+     * @param temperature           temperature set by the user
+     * @return                      the state of aggregation of substance
+     * */
+    private static String getMessage(Substance sub, double temperature) {
+        return "Temperature: " + sub.getTemperature(temperature)
+                + " degrees, aggregate states: " + sub.getAggregateStateOfSubstance(temperature);
     }
 }
