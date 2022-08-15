@@ -13,7 +13,6 @@ import lombok.extern.log4j.Log4j;
  *
  * @author Alexander Tuleninov
  */
-@Log4j
 public class Group {
     private Student[] students;
 
@@ -28,12 +27,13 @@ public class Group {
      * */
     @Override
     public String toString() {
+        StringBuilder sb = new StringBuilder();
         for (Student s : students) {
             if (s instanceof ContractStudent) {
-                log.info("Name: " + s.getName() + ", age: " + s.getAge()
+                sb.append("Name: " + s.getName() + ", age: " + s.getAge()
                         + ", cost of contract: " + ((ContractStudent) s).getCost() + "\n");
             }
         }
-        return "";
+        return sb.toString();
     }
 }

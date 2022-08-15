@@ -5,6 +5,8 @@
 
 package com.nixsolutions.alextuleninov.task1;
 
+import lombok.extern.log4j.Log4j;
+
 /**
  * The MainTask1 class consists data about students and contract student
  * and displays this data.
@@ -12,6 +14,7 @@ package com.nixsolutions.alextuleninov.task1;
  *
  * @author Alexander Tuleninov
  */
+@Log4j
 public class MainTask1 {
     public static void main(String[] args) {
         Group gr = new Group();
@@ -24,6 +27,6 @@ public class MainTask1 {
                 new ContractStudent("Kate", 21, 2000),
                 new ContractStudent("James", 20, 2100)});
 
-        gr.toString();
+        log.info(gr.toString());
     }
 }
