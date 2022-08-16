@@ -43,6 +43,12 @@ public class Iron implements Substance {
      * */
     @Override
     public State getAggregateStateOfSubstance(double temperature) {
-        return State.SOLID;
+        if (temperature >= 1300 && temperature < 2862) {
+            return State.LIQUID;
+        } else if (temperature >= 2862) {
+            return State.GAS;
+        } else {
+            return State.SOLID;
+        }
     }
 }

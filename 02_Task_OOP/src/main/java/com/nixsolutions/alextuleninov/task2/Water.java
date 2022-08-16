@@ -48,7 +48,7 @@ public class Water implements Substance {
     public State getAggregateStateOfSubstance(double temperature) {
         if (temperature < 0) {
             return State.SOLID;
-        } else if (temperature > 100) {
+        } else if (temperature >= 100) {
             return State.GAS;
         } else {
             return State.LIQUID;

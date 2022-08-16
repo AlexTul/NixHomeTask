@@ -43,6 +43,12 @@ public class Oxygen implements Substance {
      * */
     @Override
     public State getAggregateStateOfSubstance(double temperature) {
-        return State.GAS;
+        if (temperature <= -218.4) {
+            return State.LIQUID;
+        } else if (temperature > -218.4  && temperature <= -191.8) {
+            return State.SOLID;
+        } else {
+            return State.GAS;
+        }
     }
 }
