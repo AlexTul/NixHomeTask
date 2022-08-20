@@ -1,6 +1,6 @@
-package com.nixsolutions.alextuleninov.task2;
+package com.nixsolutions.alextuleninov.fourtask.task2;
 
-public abstract class Default implements Substance {
+public abstract class Default implements com.nixsolutions.alextuleninov.fourtask.task2.Substance {
     double temperature = 20;
 
     /**

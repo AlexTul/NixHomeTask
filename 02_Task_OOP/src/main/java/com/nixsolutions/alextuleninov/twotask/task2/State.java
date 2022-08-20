@@ -2,7 +2,7 @@
  * Copyright (c) 2022
  * For Nix
  */
-package com.nixsolutions.alextuleninov.task2;
+package com.nixsolutions.alextuleninov.fourtask.task2;
 
 /**
  * Enumeration of possible states of aggregation - liquid, solid and gas.

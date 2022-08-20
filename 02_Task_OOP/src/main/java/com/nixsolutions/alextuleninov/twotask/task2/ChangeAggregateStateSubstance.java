@@ -2,7 +2,7 @@
  * Copyright (c) 2022
  * For Nix
  */
-package com.nixsolutions.alextuleninov.task2;
+package com.nixsolutions.alextuleninov.fourtask.task2;
 
 import lombok.extern.log4j.Log4j;
 import java.util.Scanner;
@@ -21,29 +21,29 @@ import java.util.Scanner;
 @Log4j
 public class ChangeAggregateStateSubstance {
     public static void main(String[] args) {
-        Substance sub;
+        com.nixsolutions.alextuleninov.fourtask.task2.Substance sub;
         Scanner in = new Scanner(System.in);
 
-        log.info("Enter the substance (water or iron, or oxygen): ");
+        System.out.println("Enter the substance (water or iron, or oxygen): ");
         String substance = in.nextLine();
-        log.info("Enter the temperature in the format '0,0': ");
+        System.out.println("Enter the temperature in the format '0,0': ");
         double temp = in.nextDouble();
         in.close();
         if (temp != 0) {
             switch (substance) {
                 case "water" -> {
-                    sub = new Water();
-                    log.info(getMessage(sub, temp));
+                    sub = new com.nixsolutions.alextuleninov.fourtask.task2.Water();
+                    System.out.println(getMessage(sub, temp));
                 }
                 case "iron" -> {
-                    sub = new Iron();
-                    log.info(getMessage(sub, temp));
+                    sub = new com.nixsolutions.alextuleninov.fourtask.task2.Iron();
+                    System.out.println(getMessage(sub, temp));
                 }
                 case "oxygen" -> {
-                    sub = new Oxygen();
-                    log.info(getMessage(sub, temp));
+                    sub = new com.nixsolutions.alextuleninov.fourtask.task2.Oxygen();
+                    System.out.println(getMessage(sub, temp));
                 }
-                default -> log.info("You entered incorrect data!");
+                default -> System.out.println("You entered incorrect data!");
             }
         }
     }
@@ -55,7 +55,7 @@ public class ChangeAggregateStateSubstance {
      * @param temperature           temperature set by the user
      * @return                      the state of aggregation of substance
      * */
-    private static String getMessage(Substance sub, double temperature) {
+    private static String getMessage(com.nixsolutions.alextuleninov.fourtask.task2.Substance sub, double temperature) {
         return "Temperature: " + sub.getTemperature(temperature)
                 + " degrees, aggregate states: " + sub.getAggregateStateOfSubstance(temperature);
     }

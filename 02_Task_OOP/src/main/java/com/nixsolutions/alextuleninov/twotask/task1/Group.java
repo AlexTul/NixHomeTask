@@ -2,9 +2,7 @@
  * Copyright (c) 2022
  * For Nix
  */
-package com.nixsolutions.alextuleninov.task1;
-
-import lombok.extern.log4j.Log4j;
+package com.nixsolutions.alextuleninov.fourtask.task1;
 
 /**
  * The Group class consists data about students and contract student
@@ -14,9 +12,9 @@ import lombok.extern.log4j.Log4j;
  * @author Alexander Tuleninov
  */
 public class Group {
-    private Student[] students;
+    private com.nixsolutions.alextuleninov.fourtask.task1.Student[] students;
 
-    public void setStudents(Student[] students) {
+    public void setStudents(com.nixsolutions.alextuleninov.fourtask.task1.Student[] students) {
         this.students = students;
     }
 
@@ -28,10 +26,10 @@ public class Group {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Student s : students) {
-            if (s instanceof ContractStudent) {
+        for (com.nixsolutions.alextuleninov.fourtask.task1.Student s : students) {
+            if (s instanceof com.nixsolutions.alextuleninov.fourtask.task1.ContractStudent) {
                 sb.append("Name: " + s.getName() + ", age: " + s.getAge()
-                        + ", cost of contract: " + ((ContractStudent) s).getCost() + "\n");
+                        + ", cost of contract: " + ((com.nixsolutions.alextuleninov.fourtask.task1.ContractStudent) s).getCost() + "\n");
             }
         }
         return sb.toString();
