@@ -8,37 +8,36 @@ import static java.lang.System.err;
 import static java.lang.System.out;
 
 /**
- * The Retry class performs Block.
+ * Class Retry which contains a method that allows you to execute code in case of an error.
  *
  * @author Alexander Tuleninov
  * @version 01
  */
-public class Retry implements Block {
-    private static int number = 0;
+public class Retry {
 
-    @Override
-    public void run() throws Exception {
-        number++;
-        out.println("Number of times the method is triggered: " + number);
-    }
-
-    public static void main(String[] args) {
-        // specified number of times the method is executed run()
-        int n = 4;
+    /**
+     * The method that allows you to execute code in case of an error.
+     *
+     * @param method    interface with a method that contains an exception
+     * @param n         user-specified number of times the interface method containing the exception is executed
+     */
+    protected void repeat(Block method, int n) {
+        // the auxiliary counter
         int count = 0;
 
-        Block bl = new Retry();
-
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i <= n; i++) {
             try {
-                bl.run();
-                count = i == 0 ? 0 : count + 1;
-                Thread.sleep(100 * i);
                 if (count == n - 1) {
                     throw new RuntimeException("Run out of trials");
                 }
+                count = i == 0 ? 0 : count + 1;
+                method.run();
+                Thread.sleep(100 * i);
+            } catch (ArithmeticException e) {
+                err.println("Catch ArithmeticException before exhaustion of tests");
+                e.printStackTrace();
             } catch (RuntimeException e) {
-                err.println("Catch the RuntimeException for run out of trials");
+                err.println("Catch the RuntimeException after exhaustion of tests");
                 e.printStackTrace();
             } catch (Exception e) {
                 err.println("Catch the InterruptedException for '.sleep()' and Exception for '.run()'");
