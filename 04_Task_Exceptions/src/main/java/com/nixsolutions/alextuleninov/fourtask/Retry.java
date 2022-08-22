@@ -9,14 +9,17 @@ import static java.lang.System.out;
 
 /**
  * The Retry class performs Block.
- * @version 01
  *
  * @author Alexander Tuleninov
+ * @version 01
  */
 public class Retry implements Block {
+    private static int number = 0;
 
     @Override
     public void run() throws Exception {
+        number++;
+        out.println("Number of times the method is triggered: " + number);
     }
 
     public static void main(String[] args) {
@@ -27,7 +30,6 @@ public class Retry implements Block {
         Block bl = new Retry();
 
         for (int i = 0; i < n; i++) {
-            out.println("Number of times the method is triggered: " + (i + 1));
             try {
                 bl.run();
                 count = i == 0 ? 0 : count + 1;
