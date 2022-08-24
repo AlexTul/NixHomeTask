@@ -2,7 +2,7 @@
  * Copyright (c) 2022
  * For Nix
  */
-package com.nixsolutions.alextuleninov.fourtask.task2;
+package com.nixsolutions.alextuleninov.twotask.task2;
 
 /**
  * The Oxygen implements the Substance.
@@ -10,7 +10,7 @@ package com.nixsolutions.alextuleninov.fourtask.task2;
  *
  * @author Alexander Tuleninov
  */
-public class Oxygen extends com.nixsolutions.alextuleninov.fourtask.task2.Default implements com.nixsolutions.alextuleninov.fourtask.task2.Substance {
+public class Oxygen extends Default implements Substance {
     /**
      * This method gets the state of aggregation of substance.
      *
@@ -18,13 +18,13 @@ public class Oxygen extends com.nixsolutions.alextuleninov.fourtask.task2.Defaul
      * @return                      the state of aggregation of substance
      * */
     @Override
-    public com.nixsolutions.alextuleninov.fourtask.task2.State getAggregateStateOfSubstance(double temperature) {
+    public State getAggregateStateOfSubstance(double temperature) {
         if (temperature <= -218.4) {
-            return com.nixsolutions.alextuleninov.fourtask.task2.State.LIQUID;
+            return State.LIQUID;
         } else if (temperature > -218.4  && temperature <= -191.8) {
-            return com.nixsolutions.alextuleninov.fourtask.task2.State.SOLID;
+            return State.SOLID;
         } else {
-            return com.nixsolutions.alextuleninov.fourtask.task2.State.GAS;
+            return State.GAS;
         }
     }
 }

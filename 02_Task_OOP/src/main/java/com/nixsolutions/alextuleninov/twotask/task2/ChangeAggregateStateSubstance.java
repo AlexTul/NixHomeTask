@@ -2,7 +2,7 @@
  * Copyright (c) 2022
  * For Nix
  */
-package com.nixsolutions.alextuleninov.fourtask.task2;
+package com.nixsolutions.alextuleninov.twotask.task2;
 
 import lombok.extern.log4j.Log4j;
 import java.util.Scanner;
@@ -21,7 +21,7 @@ import java.util.Scanner;
 @Log4j
 public class ChangeAggregateStateSubstance {
     public static void main(String[] args) {
-        com.nixsolutions.alextuleninov.fourtask.task2.Substance sub;
+        Substance sub;
         Scanner in = new Scanner(System.in);
 
         System.out.println("Enter the substance (water or iron, or oxygen): ");
@@ -32,15 +32,15 @@ public class ChangeAggregateStateSubstance {
         if (temp != 0) {
             switch (substance) {
                 case "water" -> {
-                    sub = new com.nixsolutions.alextuleninov.fourtask.task2.Water();
+                    sub = new Water();
                     System.out.println(getMessage(sub, temp));
                 }
                 case "iron" -> {
-                    sub = new com.nixsolutions.alextuleninov.fourtask.task2.Iron();
+                    sub = new Iron();
                     System.out.println(getMessage(sub, temp));
                 }
                 case "oxygen" -> {
-                    sub = new com.nixsolutions.alextuleninov.fourtask.task2.Oxygen();
+                    sub = new Oxygen();
                     System.out.println(getMessage(sub, temp));
                 }
                 default -> System.out.println("You entered incorrect data!");
@@ -55,7 +55,7 @@ public class ChangeAggregateStateSubstance {
      * @param temperature           temperature set by the user
      * @return                      the state of aggregation of substance
      * */
-    private static String getMessage(com.nixsolutions.alextuleninov.fourtask.task2.Substance sub, double temperature) {
+    private static String getMessage(Substance sub, double temperature) {
         return "Temperature: " + sub.getTemperature(temperature)
                 + " degrees, aggregate states: " + sub.getAggregateStateOfSubstance(temperature);
     }

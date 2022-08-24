@@ -2,7 +2,7 @@
  * Copyright (c) 2022
  * For Nix
  */
-package com.nixsolutions.alextuleninov.fourtask.task2;
+package com.nixsolutions.alextuleninov.twotask.task2;
 
 /**
  * The Substance declares methods that operate on the characteristics of a substance.
@@ -13,5 +13,5 @@ package com.nixsolutions.alextuleninov.fourtask.task2;
 public interface Substance {
     double stateHeatUp(double temperature);
     double getTemperature(double temperature);
-    com.nixsolutions.alextuleninov.fourtask.task2.State getAggregateStateOfSubstance(double temperature);
+    State getAggregateStateOfSubstance(double temperature);
 }

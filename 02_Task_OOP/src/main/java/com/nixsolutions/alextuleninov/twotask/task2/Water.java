@@ -2,7 +2,7 @@
  * Copyright (c) 2022
  * For Nix
  */
-package com.nixsolutions.alextuleninov.fourtask.task2;
+package com.nixsolutions.alextuleninov.twotask.task2;
 
 import lombok.extern.log4j.Log4j;
 
@@ -13,7 +13,7 @@ import lombok.extern.log4j.Log4j;
  * @version 01
  */
 @Log4j
-public class Water extends com.nixsolutions.alextuleninov.fourtask.task2.Default implements com.nixsolutions.alextuleninov.fourtask.task2.Substance {
+public class Water extends Default implements Substance {
     /**
      * This method gets the state of aggregation of substance.
      *
@@ -21,13 +21,13 @@ public class Water extends com.nixsolutions.alextuleninov.fourtask.task2.Default
      * @return                      the state of aggregation of substance
      * */
     @Override
-    public com.nixsolutions.alextuleninov.fourtask.task2.State getAggregateStateOfSubstance(double temperature) {
+    public State getAggregateStateOfSubstance(double temperature) {
         if (temperature < 0) {
-            return com.nixsolutions.alextuleninov.fourtask.task2.State.SOLID;
+            return State.SOLID;
         } else if (temperature >= 100) {
-            return com.nixsolutions.alextuleninov.fourtask.task2.State.GAS;
+            return State.GAS;
         } else {
-            return com.nixsolutions.alextuleninov.fourtask.task2.State.LIQUID;
+            return State.LIQUID;
         }
     }
 }

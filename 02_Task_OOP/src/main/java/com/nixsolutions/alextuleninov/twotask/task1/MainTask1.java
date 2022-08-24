@@ -3,7 +3,7 @@
  * For Nix
  */
 
-package com.nixsolutions.alextuleninov.fourtask.task1;
+package com.nixsolutions.alextuleninov.twotask.task1;
 
 /**
  * The MainTask1 class consists data about students and contract student
@@ -14,15 +14,15 @@ package com.nixsolutions.alextuleninov.fourtask.task1;
  */
 public class MainTask1 {
     public static void main(String[] args) {
-        com.nixsolutions.alextuleninov.fourtask.task1.Group gr = new com.nixsolutions.alextuleninov.fourtask.task1.Group();
+        Group gr = new Group();
 
-        com.nixsolutions.alextuleninov.fourtask.task1.Student st = new com.nixsolutions.alextuleninov.fourtask.task1.Student();
+        Student st = new Student();
         st.setName("Petr");
         st.setAge(20);
 
-        gr.setStudents(new com.nixsolutions.alextuleninov.fourtask.task1.Student[]{st,
-                new com.nixsolutions.alextuleninov.fourtask.task1.ContractStudent("Kate", 21, 2000),
-                new com.nixsolutions.alextuleninov.fourtask.task1.ContractStudent("James", 20, 2100)});
+        gr.setStudents(new Student[]{st,
+                new ContractStudent("Kate", 21, 2000),
+                new ContractStudent("James", 20, 2100)});
 
         System.out.println(gr.toString());
     }

@@ -2,7 +2,7 @@
  * Copyright (c) 2022
  * For Nix
  */
-package com.nixsolutions.alextuleninov.fourtask.task1;
+package com.nixsolutions.alextuleninov.twotask.task1;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +17,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Getter
 @Setter
-public class ContractStudent extends com.nixsolutions.alextuleninov.fourtask.task1.Student {
+public class ContractStudent extends Student {
     private double cost;
 
     public ContractStudent(String name, int age, double cost) {

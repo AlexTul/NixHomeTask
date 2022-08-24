@@ -2,7 +2,7 @@
  * Copyright (c) 2022
  * For Nix
  */
-package com.nixsolutions.alextuleninov.fourtask.task1;
+package com.nixsolutions.alextuleninov.twotask.task1;
 
 import lombok.Getter;
 import lombok.Setter;
