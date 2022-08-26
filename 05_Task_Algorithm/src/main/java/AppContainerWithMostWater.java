@@ -7,9 +7,6 @@ import static java.lang.System.out;
 
 /**
  * The class shows how the maxArea() method works.
- *
- * @author Alexander Tuleninov
- * @version 01
  */
 public class AppContainerWithMostWater {
     public static void main(String[] args) {
