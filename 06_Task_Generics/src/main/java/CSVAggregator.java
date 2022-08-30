@@ -3,15 +3,13 @@
  * For Nix
  */
 
-import java.util.Objects;
-
 /**
  * The CSVAggregator class returning a row that is formed from line forms (toString) of elements separated by coma.
  *
  * @author Alexander Tuleninov
  * @version 01
  */
-public class CSVAggregator<A, T> implements Aggregator<A, T> {
+public class CSVAggregator<T> implements Aggregator<String, T> {
 
     /**
      * The method returning a row that is formed from line forms (toString) of elements separated by coma.
@@ -19,16 +17,16 @@ public class CSVAggregator<A, T> implements Aggregator<A, T> {
      * @param items array of what is passed to the method
      */
     @Override
-    public A aggregate(T[] items) {
-        if (items != null) {
-            String str = "";
-            for (T s : items) {
-                str = s.toString() + ", ";
-
-            }
-            return (A) str;
+    public String aggregate(T[] items) {
+        if (items == null) {
+            return null;
         }
-        return null;
+
+        String str = "";
+        for (T s : items) {
+            str = s.toString() + ", ";
+        }
+        return str;
     }
 
 }

@@ -3,23 +3,38 @@
  * For Nix
  */
 
-import java.util.Objects;
-
 /**
  * The DistinctAggregator class returning number of unique elements.
  *
  * @author Alexander Tuleninov
  * @version 01
  * */
-public class DistinctAggregator<A, T> implements Aggregator<A, T> {
+public class DistinctAggregator<T> implements Aggregator<Integer,T> {
 
     /**
-     * The method to perform aggregation operations on an array of objects.
+     * The method returns the number of unique elements.
+     *
      * @param items             array of what is passed to the method
      * */
     @Override
-    public A aggregate(T[] items) {
-        return (A) items;
+    public Integer aggregate(T[] items) {
+        if (items == null) {
+            return null;
+        }
+
+        int countUnique = 0;
+        int count = 0;
+
+        for (int i = 0; i < items.length; i++) {
+            countUnique++;
+            for (int j = i + 1; j < items.length; j++) {
+                if (items[j].equals(items[i])) {
+                    count++;
+                    break;
+                }
+            }
+        }
+        return (countUnique - count);
     }
 
 }

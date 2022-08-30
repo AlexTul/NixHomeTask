@@ -3,44 +3,48 @@
  * For Nix
  */
 
-import java.util.Objects;
-
 /**
  * The MaxAggregator class of returning is the highest value of the middle elements.
  *
  * @author Alexander Tuleninov
  * @version 01
- * */
-public class MaxAggregator<A, T> implements Aggregator<A, T> {
+ */
+public class MaxAggregator<T> implements Aggregator<Comparable, T>, Comparable {
 
     /**
      * The method returning is the highest value of the middle elements.
-     * @param items             array of what is passed to the method
-     * */
+     *
+     * @param items array of what is passed to the method
+     */
     @Override
-    public A aggregate(T[] items) {
-        if (items != null) {
-            Double maxNumber = Double.MIN_VALUE;
-            String maxString = "";
-            for (T s : items) {
-                if (s instanceof Number) {
-                    if (((Double) s).compareTo(maxNumber) > 0) {
-                        maxNumber = (Double) s;
-                    }
-                } else if (s instanceof String) {
-                    if (((String) s).compareTo(maxString) > 0) {
-                        maxString = (String) s;
-                    }
-                }
-            }
+    public Comparable aggregate(T[] items) {
+        if (items == null || items.length == 0) {
+            return null;
+        }
 
-            if (maxNumber != Double.MIN_VALUE) {
-                return (A) maxNumber;
-            } else {
-                return (A) maxString;
+        Comparable max = (Comparable) items[0];
+        for (int i = 0; i < items.length; i++) {
+            if (max.compareTo(items[i]) < 0) {
+                max = (Comparable) items[i];
             }
         }
-        return null;
+        return max;
+    }
+
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 
 }
