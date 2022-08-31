@@ -9,7 +9,7 @@
  * @author Alexander Tuleninov
  * @version 01
  * */
-public class DistinctAggregator<T> implements Aggregator<Integer,T> {
+public class DistinctAggregator<Object> implements Aggregator<Integer,Object> {
 
     /**
      * The method returns the number of unique elements.
@@ -17,9 +17,9 @@ public class DistinctAggregator<T> implements Aggregator<Integer,T> {
      * @param items             array of what is passed to the method
      * */
     @Override
-    public Integer aggregate(T[] items) {
+    public Integer aggregate(Object[] items) {
         if (items == null) {
-            return null;
+            return 0;
         }
 
         int countUnique = 0;

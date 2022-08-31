@@ -3,6 +3,8 @@
  * For Nix
  */
 
+import java.util.StringJoiner;
+
 /**
  * The CSVAggregator class returning a row that is formed from line forms (toString) of elements separated by coma.
  *
@@ -22,11 +24,11 @@ public class CSVAggregator<T> implements Aggregator<String, T> {
             return null;
         }
 
-        String str = "";
+        StringJoiner stringJoiner = new StringJoiner(", ");
         for (T s : items) {
-            str = s.toString() + ", ";
+            stringJoiner.add(s.toString());
         }
-        return str;
+        return stringJoiner.toString();
     }
 
 }

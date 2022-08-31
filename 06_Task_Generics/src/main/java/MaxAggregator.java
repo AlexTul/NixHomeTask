@@ -9,7 +9,7 @@
  * @author Alexander Tuleninov
  * @version 01
  */
-public class MaxAggregator<T> implements Aggregator<Comparable, T>, Comparable {
+public class MaxAggregator<T extends Comparable<? super T>> implements Aggregator<T, T> {
 
     /**
      * The method returning is the highest value of the middle elements.
@@ -17,34 +17,18 @@ public class MaxAggregator<T> implements Aggregator<Comparable, T>, Comparable {
      * @param items array of what is passed to the method
      */
     @Override
-    public Comparable aggregate(T[] items) {
+    public T aggregate(T[] items) {
         if (items == null || items.length == 0) {
             return null;
         }
 
-        Comparable max = (Comparable) items[0];
+        T max = items[0];
         for (int i = 0; i < items.length; i++) {
             if (max.compareTo(items[i]) < 0) {
-                max = (Comparable) items[i];
+                max = items[i];
             }
         }
         return max;
-    }
-
-
-    @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
     }
 
 }

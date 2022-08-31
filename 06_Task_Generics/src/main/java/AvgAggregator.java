@@ -3,6 +3,8 @@
  * For Nix
  */
 
+import java.util.Objects;
+
 /**
  * The AvgAggregator class returning of the arithmetic mean of elements.
  *
@@ -17,36 +19,17 @@ public class AvgAggregator<T extends Number> implements Aggregator<Number, T> {
      * @param items array of what is passed to the method
      */
     @Override
-    public Number aggregate(T[] items) {
+    public Double aggregate(T[] items) {
         if (items == null) {
-            return null;
+            return 0.0;
         }
 
-        long averageLong = 0L;
         double averageDouble = 0.0;
         for (T d : items) {
-            if (d instanceof Byte) {
-                averageLong += d.byteValue();
-            } else if (d instanceof Short) {
-                averageLong += d.shortValue();
-            } else if (d instanceof Integer) {
-                averageLong += d.intValue();
-            } else if (d instanceof Long) {
-                averageLong += d.longValue();
-            } else if (d instanceof Float) {
-                averageDouble += d.floatValue();
-            } else {
-                averageDouble += d.doubleValue();
-            }
+            averageDouble += d.doubleValue();
         }
-        averageLong = averageLong / items.length;
-        averageDouble = averageDouble / items.length;
-
-        if (averageLong != 0) {
-            return averageLong;
-        } else {
-            return averageDouble;
-        }
+        return averageDouble / items.length;
     }
 
 }
+
