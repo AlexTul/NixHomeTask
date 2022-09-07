@@ -3,8 +3,10 @@
  * For Nix
  */
 
+package com.nixsolutions.alextuleninov.six;
+
 /**
- * The MaxAggregator class of returning is the highest value of the middle elements.
+ * The com.nixsolutions.alextuleninov.six.MaxAggregator class of returning is the highest value of the middle elements.
  *
  * @author Alexander Tuleninov
  * @version 01

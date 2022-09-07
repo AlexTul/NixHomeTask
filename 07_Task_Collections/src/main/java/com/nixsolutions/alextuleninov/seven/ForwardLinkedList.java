@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2022
+ * For Nix
+ */
+
+package com.nixsolutions.alextuleninov.seven;
+
 import java.util.AbstractList;
 
 /**
@@ -8,11 +15,12 @@ import java.util.AbstractList;
  * the add(int, E) and remove(int) methods.
  * <p>
  * https://habr.com/ru/post/337558/
+ * https://www.youtube.com/watch?v=RrmYVx07XQY
  */
 public class ForwardLinkedList<E> extends AbstractList<E> {
 
     /**
-     * Size of ForwardLinkedList.
+     * Size of com.nixsolutions.alextuleninov.seven.ForwardLinkedList.
      */
     private int size = 0;
 

@@ -1,7 +1,9 @@
 /*
- * Copyright (c) 2022
- * For Nix
- */
+* Copyright (c) 2022
+* For Nix
+*/
+
+package com.nixsolutions.alextuleninov.five;
 
 /**
  * Task from LeetCode.

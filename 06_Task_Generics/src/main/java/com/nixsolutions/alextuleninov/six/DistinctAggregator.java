@@ -3,8 +3,10 @@
  * For Nix
  */
 
+package com.nixsolutions.alextuleninov.six;
+
 /**
- * The DistinctAggregator class returning number of unique elements.
+ * The com.nixsolutions.alextuleninov.six.DistinctAggregator class returning number of unique elements.
  *
  * @author Alexander Tuleninov
  * @version 01

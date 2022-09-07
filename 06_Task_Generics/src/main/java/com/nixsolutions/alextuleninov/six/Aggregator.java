@@ -3,6 +3,8 @@
  * For Nix
  */
 
+package com.nixsolutions.alextuleninov.six;
+
 /**
  * Interface to perform aggregation operations on an array of objects.
  *

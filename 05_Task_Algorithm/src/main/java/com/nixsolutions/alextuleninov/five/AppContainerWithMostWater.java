@@ -3,6 +3,8 @@
  * For Nix
  */
 
+package com.nixsolutions.alextuleninov.five;
+
 import static java.lang.System.out;
 
 /**

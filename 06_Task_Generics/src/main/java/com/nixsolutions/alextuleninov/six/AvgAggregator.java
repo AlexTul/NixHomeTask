@@ -3,10 +3,10 @@
  * For Nix
  */
 
-import java.util.Objects;
+package com.nixsolutions.alextuleninov.six;
 
 /**
- * The AvgAggregator class returning of the arithmetic mean of elements.
+ * The com.nixsolutions.alextuleninov.six.AvgAggregator class returning of the arithmetic mean of elements.
  *
  * @author Alexander Tuleninov
  * @version 01

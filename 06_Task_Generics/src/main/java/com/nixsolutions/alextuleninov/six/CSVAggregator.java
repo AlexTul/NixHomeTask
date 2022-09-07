@@ -3,10 +3,12 @@
  * For Nix
  */
 
+package com.nixsolutions.alextuleninov.six;
+
 import java.util.StringJoiner;
 
 /**
- * The CSVAggregator class returning a row that is formed from line forms (toString) of elements separated by coma.
+ * The com.nixsolutions.alextuleninov.six.CSVAggregator class returning a row that is formed from line forms (toString) of elements separated by coma.
  *
  * @author Alexander Tuleninov
  * @version 01
