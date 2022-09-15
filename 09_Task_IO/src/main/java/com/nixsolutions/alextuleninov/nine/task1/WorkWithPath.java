@@ -71,7 +71,7 @@ final class MyFileVisitor extends SimpleFileVisitor<Path> {
         for (String s: lines) {
             Matcher matcher = WorkWithPath.pattern.matcher(s);
             if (matcher.find()) {
-                out.println(s);
+                out.println("[" + s + "]");
             }
         }
         out.println(path.toAbsolutePath());
