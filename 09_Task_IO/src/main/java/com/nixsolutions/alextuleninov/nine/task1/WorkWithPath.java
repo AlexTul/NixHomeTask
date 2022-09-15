@@ -59,9 +59,15 @@ final class MyFileVisitor extends SimpleFileVisitor<Path> {
      * @param path              the path to the file or directory
      * */
     @Override
-    public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) throws IOException {
+    public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) {
 
-        List<String> lines = Files.readAllLines(path);
+        List<String> lines;
+        try {
+            lines = Files.readAllLines(path);
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+
         for (String s: lines) {
             Matcher matcher = WorkWithPath.pattern.matcher(s);
             if (matcher.find()) {
