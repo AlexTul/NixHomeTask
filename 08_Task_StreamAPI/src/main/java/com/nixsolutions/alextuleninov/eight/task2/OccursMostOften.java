@@ -40,4 +40,56 @@ public final class OccursMostOften {
                 .map(Map.Entry::getKey).orElse(null);
     }
 
+    public BigDecimal findСommon1(List<BigDecimal> theList) {
+        /**
+         * Другое решение, собирая элементы на карте по их частоте, затем находить запись с максимальным значением
+         * и возвращая ее ключ (в основном то же самое решение на arshajii answer, написанный с использованием Java 8):
+         * */
+        return theList.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet().stream().max((o1, o2) -> o1.getValue().compareTo(o2.getValue()))
+                .map(Map.Entry::getKey).orElse(null);
+    }
+
+    public List<BigDecimal> findСommon2(List<BigDecimal> theList) {
+        /**
+         * Обновление: Если наиболее частые элементы более одного, и вы хотите получить их все в коллекции,
+         * я предлагаю два метода:
+         *
+         * Метод A:. После сбора исходной коллекции на карту с ключами как элементами и значениями в качестве
+         * их количества, получение записи с максимальным значением и фильтрация записей карты со значением,
+         * равным этому максимальное значение (если) мы нашли. Что-то вроде этого:
+         * */
+        Map<BigDecimal, Long> elementCountMap = theList.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+       return elementCountMap.values().stream()
+                .max(Long::compareTo)
+                .map(maxValue -> elementCountMap.entrySet().stream().filter(entry -> maxValue.equals(entry.getValue()))
+                        .map(Map.Entry::getKey)
+                        .collect(Collectors.toList()))
+                .orElse(Collections.emptyList());
+    }
+
+    public List<BigDecimal> findСommon3(List<BigDecimal> theList) {
+        /**
+         * Метод B: После сбора исходной коллекции на карту с ключами как элементами и значениями в качестве
+         * их количества, преобразование этой карты в новую карту с ключами как количество вхождений,
+         * значения как список элементов с таким количеством вхождений. А затем нахождение максимального элемента
+         * этой карты с помощью специального компаратора, который сравнивает ключи и получает значение этой записи.
+         * Вот так:
+         * */
+
+        return theList.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .collect(Collectors.groupingBy(Map.Entry::getValue, Collectors.mapping(Map.Entry::getKey, Collectors.toList())))
+                .entrySet()
+                .stream()
+                .max((o1, o2) -> o1.getKey().compareTo(o2.getKey()))
+                .map(Map.Entry::getValue)
+                .orElse(Collections.emptyList());
+    }
+
 }
