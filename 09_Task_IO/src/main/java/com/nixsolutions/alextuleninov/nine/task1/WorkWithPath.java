@@ -7,10 +7,8 @@ package com.nixsolutions.alextuleninov.nine.task1;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -25,58 +23,54 @@ import static java.lang.System.out;
  * 2. All lines in this file where there are groups of characters that match the given regEx (RX),
  * highlight that group with [ ].
  */
-public class WorkWithPath {
+public final class WorkWithPath {
+    static Path path;
+    static Pattern pattern;
 
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         out.println("Please, enter the path to a file or directory: ");
-        Path path = Path.of(scanner.nextLine());
+        path = Path.of(scanner.nextLine());
         out.println("Please, enter the regular expression (regEx): ");
-        Pattern pattern = Pattern.compile(scanner.nextLine());
+        pattern = Pattern.compile(scanner.nextLine());
         scanner.close();
 
-        Path absolute = new WorkWithPath().pathToAbsolute(path);
-        out.print("Absolute path to the file or directory: " + absolute);
-
-        List<String> resultLines = new WorkWithPath().findAllLinesWithRegex(path, pattern);
-        out.println(resultLines);
-
+        try {
+            Files.walkFileTree(path, new MyFileVisitor());
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
     }
+
+}
+
+/**
+ * A class that provides the ability to know the root directory, we must go through it,
+ * look into the folders of all levels and find files with the content we need in them.
+ * */
+final class MyFileVisitor extends SimpleFileVisitor<Path> {
 
     /**
      * This method to converts path to Absolute path to the file or directory.
-     *
-     * @param path              the path to the file or directory
-     * */
-    public Path pathToAbsolute(Path path) {
-        return path.toAbsolutePath();
-    }
-
-    /**
      * This method to prints to the console all lines in file that contain groups of characters
      * that match the given regular expression (RX), highlight this group with [ ].
      *
      * @param path              the path to the file or directory
-     * @param pattern           the regular expression (regEx)
      * */
-    public List<String> findAllLinesWithRegex(Path path, Pattern pattern) {
-        List<String> lines = new ArrayList<>();
-        try {
-            lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
+    @Override
+    public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) throws IOException {
 
-        List<String> result = new ArrayList<>();
-        for (String s : lines) {
-            Matcher matcher = pattern.matcher(s);
+        List<String> lines = Files.readAllLines(path);
+        for (String s: lines) {
+            Matcher matcher = WorkWithPath.pattern.matcher(s);
             if (matcher.find()) {
-                result.add(s);
+                out.println(s);
             }
         }
+        out.println(path.toAbsolutePath());
 
-        return result;
+        return FileVisitResult.CONTINUE;
     }
 
 }
