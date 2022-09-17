@@ -7,8 +7,10 @@ package com.nixsolutions.alextuleninov.nine.task1;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -22,6 +24,9 @@ import static java.lang.System.out;
  * 1. Absolute path to the file
  * 2. All lines in this file where there are groups of characters that match the given regEx (RX),
  * highlight that group with [ ].
+ * https://habr.com/ru/post/437694/
+ * https://javarush.ru/groups/posts/2275-files-path
+ * https://javarush.ru/quests/lectures/questsyntaxpro.level15.lecture04
  */
 public final class WorkWithPath {
     static Path path;
