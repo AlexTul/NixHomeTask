@@ -6,7 +6,6 @@
 package com.nixsolutions.alextuleninov.eleven.task1;
 
 import java.nio.file.Path;
-import java.util.*;
 
 import static java.lang.System.*;
 
@@ -22,18 +21,21 @@ public final class ShortestRouteFromEntranceToExit {
 
     public static void main(String[] args) {
 
-        Path path = Data.getDataPath();
-        int[] coordinates = Data.getDataCoordinates();
+        Data data = new Data();
+
+        Path path = data.getDataPath();
+        int[] coordinates = data.getDataCoordinates();
 
         char[][] matrix = new Matrix().readAllLinesToMatrix(path);
 
         boolean resultProgramm = new Algorithm()
-                .printResultPath(matrix, coordinates[0], coordinates[1], coordinates[2], coordinates[3]);
+                .booleanResultPath(matrix, coordinates[0], coordinates[1], coordinates[2], coordinates[3]);
 
-        if (!resultProgramm) {
+        if (resultProgramm) {
+            new PrintedResult().printedResult(Algorithm.getMat());
+        } else {
             out.println("There is no way");
         }
     }
 
 }
-

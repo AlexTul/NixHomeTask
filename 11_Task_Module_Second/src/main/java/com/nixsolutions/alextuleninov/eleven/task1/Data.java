@@ -20,7 +20,7 @@ public final class Data {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static Path getDataPath() {
+    public Path getDataPath() {
         Path path = null;
         try  {
             out.print("Please, enter the path to a file: ");
@@ -33,7 +33,7 @@ public final class Data {
         return path;
     }
 
-    public static int[] getDataCoordinates() {
+    public int[] getDataCoordinates() {
         int[] coordinates = new int[4];
         try {
             out.print("\nPlease, enter the coordinates (format: \"x y\") of the ENTRANCE from the maze, " +

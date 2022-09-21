@@ -8,7 +8,6 @@ package com.nixsolutions.alextuleninov.eleven.task1;
 import java.util.*;
 
 import static java.lang.System.err;
-import static java.lang.System.out;
 
 /**
  * The Algorithm class represents algorithm for solving the problem
@@ -16,7 +15,13 @@ import static java.lang.System.out;
  */
 public final class Algorithm {
 
-    boolean printResultPath(char[][] mat, int x1, int y1, int x2, int y2) {
+    static char[][] matrix;
+
+    public static char[][] getMat() {
+        return matrix;
+    }
+
+    boolean booleanResultPath(char[][] mat, int x1, int y1, int x2, int y2) {
 
         Map<Node, Node> returnPath = new HashMap();
 
@@ -35,12 +40,8 @@ public final class Algorithm {
 
             points.forEach(current -> mat[current.x()][current.y()] = '#');
 
-            for (char[] chars : mat) {
-                for (char ss : chars) {
-                    out.print(ss);
-                }
-                out.println();
-            }
+            matrix = mat;
+
             return true;
         }
         return false;
