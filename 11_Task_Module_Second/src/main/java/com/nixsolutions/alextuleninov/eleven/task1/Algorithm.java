@@ -15,15 +15,15 @@ import static java.lang.System.err;
  */
 public final class Algorithm {
 
-    static char[][] matrix;
+    private static char[][] matrix;
 
-    public static char[][] getMat() {
+    char[][] getMat() {
         return matrix;
     }
 
     boolean booleanResultPath(char[][] mat, int x1, int y1, int x2, int y2) {
 
-        Map<Node, Node> returnPath = new HashMap();
+        HashMap<Node, Node> returnPath = new HashMap<>();
 
         boolean shortPath = findShortestPath(mat, x1, y1, x2, y2, returnPath);
 

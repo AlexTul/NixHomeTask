@@ -32,7 +32,7 @@ public final class ShortestRouteFromEntranceToExit {
                 .booleanResultPath(matrix, coordinates[0], coordinates[1], coordinates[2], coordinates[3]);
 
         if (resultProgramm) {
-            new PrintedResult().printedResult(Algorithm.getMat());
+            new PrintedResult().printedResult(new Algorithm().getMat());
         } else {
             out.println("There is no way");
         }
