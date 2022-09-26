@@ -12,6 +12,7 @@
         <module>08_Task_StreamAPI</module>
         <module>09_Task_IO</module>
         <module>11_Task_Module_Second</module>
+        <module>13_Task_Reflection_Annotations</module>
     </modules>
 
     <properties>

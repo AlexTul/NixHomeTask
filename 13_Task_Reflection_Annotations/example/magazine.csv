@@ -1,0 +1,4 @@
+name;sex;age;growth;weight;agreement
+Jorg;Male;21;180;96.5;true
+Piter;Male;22;182;98.5;false
+Lisa;Female;19;170;53.2;true
