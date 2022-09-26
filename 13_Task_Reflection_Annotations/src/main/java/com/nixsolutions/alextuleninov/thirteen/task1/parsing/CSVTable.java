@@ -1,6 +1,8 @@
 package com.nixsolutions.alextuleninov.thirteen.task1.parsing;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public final class CSVTable {
 
@@ -29,14 +31,12 @@ public final class CSVTable {
      */
     public String searchByRowTitle(int row, String title) {
         List<String> titles = csvTable.get(0);
-        int index = 0;
-        for (int i = 0; i < titles.size(); i++) {
-            if (titles.get(i).equals(title)) {
-                index = i;
-            }
+        Map<String, Integer> map = new HashMap();
+        for (int i = 1; i <= titles.size(); i++) {
+            map.put(csvTable.get(0).get(i - 1), i);
         }
 
-        return csvTable.get(row).get(index + 1);
+        return csvTable.get(row).get(map.get(title));
     }
 
     /**

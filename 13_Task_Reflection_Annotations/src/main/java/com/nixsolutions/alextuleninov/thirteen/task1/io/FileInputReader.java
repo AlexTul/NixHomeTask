@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2022
+ * For Nix
+ */
+
 package com.nixsolutions.alextuleninov.thirteen.task1.io;
 
 import java.io.IOException;
@@ -8,7 +13,10 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Objects;
 
-public class FileInputReader implements InputReader {
+/**
+ * The FileInputReader class reads the lines of a file.
+ * */
+public final class FileInputReader implements InputReader {
 
     private final Path path;
 

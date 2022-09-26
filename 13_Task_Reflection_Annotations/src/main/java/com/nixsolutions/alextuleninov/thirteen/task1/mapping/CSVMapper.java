@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2022
+ * For Nix
+ */
+
 package com.nixsolutions.alextuleninov.thirteen.task1.mapping;
 
 import com.nixsolutions.alextuleninov.thirteen.task1.parsing.CSVTable;
@@ -8,7 +13,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVMapper implements Mapper {
+/**
+ * The CSVMapper class is a class fo to create a list
+ * of objects of a given type from the table CSV data.
+ * */
+public final class CSVMapper implements Mapper {
 
     @Override
     public <T> List<T> map(CSVTable table, Class<T> resultType) {
@@ -16,18 +25,23 @@ public class CSVMapper implements Mapper {
         List<T> result = new ArrayList<>();
 
         for (int i = 1; i < table.getCsvTable().size(); i++) {
-
             try {
+                // берем конструктор по умолчанию
                 Constructor<T> constructor = resultType.getConstructor();
-
+                // создаем новый инстанс
                 T target = constructor.newInstance();
 
+                // походим по всем public полям этого инстанса
                 for (Field field : resultType.getFields()) {
+                    // берем аннотацию проперти кей
                     PropertyKey key = field.getAnnotation(PropertyKey.class);
+                    // если она не существует, то продолжаем
                     if (key == null) continue;
-                    String prop = table.getCsvTable().get(i).get(key.value() + (i - 1)/*элемент с индексом 0*/);
+                    // берем значение prop из нашей таблицы
+                    String prop = table.getCsvTable().get(i).get(key.value()/*элемент с индексом 0*/);
                     if (prop == null) continue;
 
+                    // берем тип поля и в зависимости от этого инициализируем заначение с нашего prop
                     Class<?> type = field.getType();
                     if (type == String.class) {
                         field.set(target, prop);
@@ -46,15 +60,13 @@ public class CSVMapper implements Mapper {
                                 type.getName() + ") is required for field " +
                                 field.getName());
                     }
-
                 }
-
                 result.add(target);
             } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                 throw new RuntimeException(e);
             }
-
         }
+
         return result;
     }
 
