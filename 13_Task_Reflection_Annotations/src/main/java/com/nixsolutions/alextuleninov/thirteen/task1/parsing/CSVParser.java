@@ -19,8 +19,11 @@ import static java.lang.System.out;
  * b) by line number and title text.
  * And also allows you to get a list of titles.
  * */
-public final class CSVParser implements Parser {
+public class CSVParser implements Parser {
 
+    /**
+     * The method for running all methods.
+     * */
     public CSVTable run() {
 
         var scanner = new Scanner(System.in);
@@ -31,11 +34,22 @@ public final class CSVParser implements Parser {
 
     }
 
+    /**
+     * The method for receive the path.
+     *
+     * @param scanner       the object of Scanner
+     * */
     private static Path getPath(Scanner scanner) {
         out.println("Input path to input file: ");
         return Path.of(scanner.nextLine());
     }
 
+    /**
+     * The method fo to build a CSVTable data structure
+     * from the .csv file
+     *
+     * @param path      the path of the csv file
+     * */
     @Override
     public CSVTable parse(Path path) {
 

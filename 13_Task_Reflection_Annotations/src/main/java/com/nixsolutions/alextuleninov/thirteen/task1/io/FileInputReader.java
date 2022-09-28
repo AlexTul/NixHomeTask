@@ -16,7 +16,7 @@ import java.util.Objects;
 /**
  * The FileInputReader class reads the lines of a file.
  * */
-public final class FileInputReader implements InputReader {
+public class FileInputReader implements InputReader {
 
     private final Path path;
 
