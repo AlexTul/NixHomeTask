@@ -32,30 +32,19 @@ public class CSVMapper implements Mapper {
         List<T> result = new ArrayList<>();
 
             try {
-                    // берем конструктор по умолчанию
                     Constructor<T> constructor = resultType.getConstructor();
-                    // достанем поля, одни на все классы
-                    //Field[] fields = resultType.getFields(); // если только паблик поля потомка и родителя
-                    Field[] fields = resultType.getDeclaredFields(); // в том числе и приватные
+                    Field[] fields = resultType.getDeclaredFields();
 
                 for (int i = 1; i < table.getCsvTable().size(); i++) {
-                    // создаем новый инстанс
                     T target = constructor.newInstance();
 
-                    // походим по всем public полям этого инстанса
                     for (Field field : fields) {
-
-                        // берем аннотацию проперти кей
                         PropertyKey key = field.getAnnotation(PropertyKey.class);
-                        // если она не существует, то продолжаем
                         if (key == null) continue;
-                        // берем значение prop из нашей таблицы
-                        String prop = table.getCsvTable().get(i).get(key.value()/*индекс элемента в i строке*/);
+                        String prop = table.getCsvTable().get(i).get(key.value());
                         if (prop == null) continue;
 
-                        // берем тип поля и в зависимости от этого инициализируем значение с нашего prop
                         Class<?> type = field.getType();
-
                         if (type == String.class) {
                             field.set(target, prop);
                         } else if (type.isEnum()) {
