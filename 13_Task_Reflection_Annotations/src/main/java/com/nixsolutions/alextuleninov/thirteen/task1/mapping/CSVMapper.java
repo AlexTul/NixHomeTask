@@ -35,7 +35,8 @@ public class CSVMapper implements Mapper {
                     // берем конструктор по умолчанию
                     Constructor<T> constructor = resultType.getConstructor();
                     // достанем поля, одни на все классы
-                    Field[] fields = resultType.getFields();
+                    //Field[] fields = resultType.getFields(); // если только паблик поля потомка и родителя
+                    Field[] fields = resultType.getDeclaredFields(); // в том числе и приватные
 
                 for (int i = 1; i < table.getCsvTable().size(); i++) {
                     // создаем новый инстанс
@@ -43,16 +44,18 @@ public class CSVMapper implements Mapper {
 
                     // походим по всем public полям этого инстанса
                     for (Field field : fields) {
+
                         // берем аннотацию проперти кей
                         PropertyKey key = field.getAnnotation(PropertyKey.class);
                         // если она не существует, то продолжаем
                         if (key == null) continue;
                         // берем значение prop из нашей таблицы
-                        String prop = table.getCsvTable().get(i).get(key.value());
+                        String prop = table.getCsvTable().get(i).get(key.value()/*индекс элемента в i строке*/);
                         if (prop == null) continue;
 
-                        // берем тип поля и в зависимости от этого инициализируем заначение с нашего prop
+                        // берем тип поля и в зависимости от этого инициализируем значение с нашего prop
                         Class<?> type = field.getType();
+
                         if (type == String.class) {
                             field.set(target, prop);
                         } else if (type.isEnum()) {
@@ -64,6 +67,7 @@ public class CSVMapper implements Mapper {
                         } else if (type == double.class || type == Double.class) {
                             field.setDouble(target, Double.parseDouble(prop));
                         } else if (type == boolean.class || type == Boolean.class) {
+                            field.setAccessible(true);
                             field.setBoolean(target, Boolean.parseBoolean(prop));
                         } else {
                             throw new UnsupportedOperationException("Unsupported field type (" +

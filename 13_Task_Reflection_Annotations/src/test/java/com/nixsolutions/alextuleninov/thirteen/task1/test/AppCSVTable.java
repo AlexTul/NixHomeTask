@@ -1,4 +1,4 @@
-package com.nixsolutions.alextuleninov.thirteen.task1.test.mapping;
+package com.nixsolutions.alextuleninov.thirteen.task1.test;
 
 import com.nixsolutions.alextuleninov.thirteen.task1.mapping.PropertyKey;
 
@@ -20,7 +20,11 @@ public class AppCSVTable {
     public double weight;
 
     @PropertyKey(5)
-    public boolean agreement;
+    private boolean agreement;
+
+    public boolean isAgreement() {
+        return agreement;
+    }
 
     enum Sex {
         MALE, FEMALE

@@ -12,4 +12,3 @@ public @interface PropertyKey {
     int value();
 
 }
-
