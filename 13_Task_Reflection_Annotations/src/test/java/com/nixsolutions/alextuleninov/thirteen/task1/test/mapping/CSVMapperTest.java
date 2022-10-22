@@ -7,7 +7,9 @@ import com.nixsolutions.alextuleninov.thirteen.task1.test.AppCSVTable;
 import com.nixsolutions.alextuleninov.thirteen.task1.test.ExampleForTestCSVTable;
 import org.junit.jupiter.api.Test;
 
+import java.net.URISyntaxException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import static java.lang.System.out;
@@ -18,10 +20,11 @@ class CSVMapperTest {
     private static final String CLASS_NAME = "AppCSVTable";
 
     @Test
-    void map() {
+    void map() throws URISyntaxException {
 
         CSVParser parser = new CSVParser();
-        Path path = Path.of("example/magazine.csv");
+        //Path path = Path.of("src/test/resources/magazine.csv");
+        Path path = Paths.get(getClass().getResource("/magazine.csv").toURI());
         CSVTable csvTable = parser.parse(path);
 
         CSVMapper csvMapper = new CSVMapper();
@@ -33,7 +36,6 @@ class CSVMapperTest {
         assertEquals(ExampleForTestCSVTable.getRow1().get(2), String.valueOf(appCSVTable.get(0).age));
         assertEquals(ExampleForTestCSVTable.getRow1().get(3), String.valueOf(appCSVTable.get(0).growth));
         assertEquals(ExampleForTestCSVTable.getRow1().get(4), String.valueOf(appCSVTable.get(0).weight));
-        //assertEquals(ExampleForTestCSVTable.getRow1().get(5), String.valueOf(appCSVTable.get(0).agreement));
         assertEquals(ExampleForTestCSVTable.getRow1().get(5), String.valueOf(appCSVTable.get(0).isAgreement()));
 
         assertEquals(ExampleForTestCSVTable.getRow2().get(0), appCSVTable.get(1).name);
@@ -41,7 +43,6 @@ class CSVMapperTest {
         assertEquals(ExampleForTestCSVTable.getRow2().get(2), String.valueOf(appCSVTable.get(1).age));
         assertEquals(ExampleForTestCSVTable.getRow2().get(3), String.valueOf(appCSVTable.get(1).growth));
         assertEquals(ExampleForTestCSVTable.getRow2().get(4), String.valueOf(appCSVTable.get(1).weight));
-        //assertEquals(ExampleForTestCSVTable.getRow2().get(5), String.valueOf(appCSVTable.get(1).agreement));
         assertEquals(ExampleForTestCSVTable.getRow2().get(5), String.valueOf(appCSVTable.get(1).isAgreement()));
 
         assertEquals(ExampleForTestCSVTable.getRow3().get(0), appCSVTable.get(2).name);
@@ -49,7 +50,6 @@ class CSVMapperTest {
         assertEquals(ExampleForTestCSVTable.getRow3().get(2), String.valueOf(appCSVTable.get(2).age));
         assertEquals(ExampleForTestCSVTable.getRow3().get(3), String.valueOf(appCSVTable.get(2).growth));
         assertEquals(ExampleForTestCSVTable.getRow3().get(4), String.valueOf(appCSVTable.get(2).weight));
-        //assertEquals(ExampleForTestCSVTable.getRow3().get(5), String.valueOf(appCSVTable.get(2).agreement));
         assertEquals(ExampleForTestCSVTable.getRow3().get(5), String.valueOf(appCSVTable.get(2).isAgreement()));
 
         for (int i = 0; i < csvTable.getCsvTable().size() - 1; i++) {
@@ -59,7 +59,6 @@ class CSVMapperTest {
             out.println(CLASS_NAME + i + ".growth: " + appCSVTable.get(i).growth);
             out.println(CLASS_NAME + i + ".weight: " + appCSVTable.get(i).weight);
             out.println(CLASS_NAME + i + ".weight: " + appCSVTable.get(i).weight);
-            //out.println(CLASS_NAME + i + ".agreement: " + appCSVTable.get(i).agreement);
             out.println(CLASS_NAME + i + ".agreement: " + appCSVTable.get(i).isAgreement());
             out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         }

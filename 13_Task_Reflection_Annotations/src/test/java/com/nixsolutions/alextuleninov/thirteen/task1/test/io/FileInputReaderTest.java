@@ -5,7 +5,9 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.net.URISyntaxException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,9 +32,9 @@ class FileInputReaderTest {
     }
 
     @Test
-    void read() {
-
-        Path path = Path.of("example/magazine.csv");
+    void read() throws URISyntaxException {
+        //Path path = Path.of("src/test/resources/magazine.csv");
+        Path path = Paths.get(getClass().getResource("/magazine.csv").toURI());
 
         FileInputReader inputReader = new FileInputReader(path);
 
