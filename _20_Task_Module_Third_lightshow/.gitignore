@@ -1,9 +1,0 @@
-# idea
-*.iml
-.idea/
-
-# maven
-target
-
-# output
-*.log
