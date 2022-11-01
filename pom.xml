@@ -20,6 +20,7 @@
         <module>13_Task_Reflection_Annotations</module>
         <module>_20_Task_Module_Third_lightshow</module>
         <module>_21_Task_Threads</module>
+        <module>_22_Task_Threads_Concurrency</module>
     </modules>
 
     <properties>

@@ -13,9 +13,9 @@
         <property name="hibernate.connection.provider_class">org.hibernate.hikaricp.internal.HikariCPConnectionProvider</property>
         <property name="hibernate.hikari.maximumPoolSize">1</property>
 
-        <mapping class="com.nixsolutions.alextuleninov.modulthird.model.Color"/>
-        <mapping class="com.nixsolutions.alextuleninov.modulthird.model.Light"/>
-        <mapping class="com.nixsolutions.alextuleninov.modulthird.model.ColorHistoryRecord"/>
+        <mapping class="com.nixsolutions.alextuleninov.threadsconcurrency.alextuleninov.modulthird.model.Color"/>
+        <mapping class="com.nixsolutions.alextuleninov.threadsconcurrency.alextuleninov.modulthird.model.Light"/>
+        <mapping class="com.nixsolutions.alextuleninov.threadsconcurrency.alextuleninov.modulthird.model.ColorHistoryRecord"/>
     </session-factory>
 
 </hibernate-configuration>
