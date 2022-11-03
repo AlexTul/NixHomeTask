@@ -41,7 +41,11 @@ public class ServletApp extends HttpServlet {
             if (s.equals(remoteHost)) {
                 responseBody.printf("""
                 <p align="center"><b>%s</b> :: <b>%s</b></p>%n
-                """, req.getRemoteHost(), req.getHeader("User-Agent"));
+                """, s, metaData.get(s));
+            } else {
+                responseBody.printf("""
+                <p align="center">%s :: %s</p>%n
+                """, s, metaData.get(s));
             }
         }
     }
