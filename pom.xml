@@ -21,6 +21,7 @@
         <module>_20_Task_Module_Third_lightshow</module>
         <module>_21_Task_Threads</module>
         <module>_22_Task_Threads_Concurrency</module>
+        <module>_24_Task_ServletAPI</module>
     </modules>
 
     <properties>
