@@ -20,7 +20,6 @@ public class ServletApp extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(ServletApp.class);
 
     private final Map<String , String> metaData = new ConcurrentHashMap<>();;
-    private final Set<String> headers = ConcurrentHashMap.newKeySet();
 
     @Override
     public void init() throws ServletException {
