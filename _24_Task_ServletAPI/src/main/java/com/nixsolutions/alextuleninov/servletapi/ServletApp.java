@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -18,7 +19,7 @@ public class ServletApp extends HttpServlet {
 
     private static final Logger log = LoggerFactory.getLogger(ServletApp.class);
 
-    private final Set<String> ips = ConcurrentHashMap.newKeySet();
+    private final Map<String , String> metaData = new ConcurrentHashMap<>();;
     private final Set<String> headers = ConcurrentHashMap.newKeySet();
 
     @Override
@@ -32,21 +33,16 @@ public class ServletApp extends HttpServlet {
         String remoteHost = req.getRemoteHost();
         String headerUserAgent = req.getHeader("User-Agent");
 
-        ips.add(remoteHost);
-        headers.add(headerUserAgent);
+        metaData.put(remoteHost, headerUserAgent);
 
         PrintWriter responseBody = resp.getWriter();
         resp.setContentType("text/html");
 
-        for (String s : ips) {
-            if (s.equals(req.getRemoteHost())) {
+        for (String s : metaData.keySet()) {
+            if (s.equals(remoteHost)) {
                 responseBody.printf("""
-                <h3 align="center"><b>%s</b> :: <b>%s</b></h3>%n
+                <p align="center"><b>%s</b> :: <b>%s</b></p>%n
                 """, req.getRemoteHost(), req.getHeader("User-Agent"));
-            } else {
-                responseBody.printf("""
-                <h3 align="center">%s :: %s</h3>%n
-                """, ips, headers);
             }
         }
     }
